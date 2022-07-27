@@ -1,4 +1,4 @@
-import { Button } from 'antd';
+import CommonLayout from 'components/shared/CommonLayout';
 import Cookies from 'js-cookie';
 import { useDispatch } from 'react-redux';
 import { logout } from 'redux/reducers/authSlice';
@@ -13,9 +13,9 @@ const Home = () => {
   };
 
   return (
-    <Button onClick={handleLogout} type="primary">
-      Temp. Logout
-    </Button>
+    <CommonLayout>
+      <h1>Home Page</h1>
+    </CommonLayout>
   );
 };
 

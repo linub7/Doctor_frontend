@@ -12,8 +12,7 @@ import LoggedInRoutes from 'routes/LoggedInRoutes';
 
 function App() {
   const { loading } = useSelector((state) => state.alerts);
-  const { auth } = useSelector((state) => state.auth);
-  console.log(auth);
+
   return (
     <>
       {loading && <CustomSpinner />}
