@@ -26,9 +26,7 @@ const Register = () => {
 
     dispatch(hideLoading());
     toast.success('Register Successful');
-    const { success, ...rest } = data;
-    Cookies.set('auth', JSON.stringify(rest));
-    navigate('/');
+    navigate('/auth/login');
   };
   return (
     <>

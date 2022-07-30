@@ -21,3 +21,16 @@
 .ant-spin-dot-item {
   background-color: #f39c12;
 }
+
+.ant-btn-primary {
+  background-color: #2ecc71 !important;
+  border-color: #2ecc71 !important;
+}
+
+.route-link {
+  color: black;
+}
+
+.route-link:hover {
+  color: #2ecc71;
+}

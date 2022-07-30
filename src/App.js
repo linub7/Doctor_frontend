@@ -9,6 +9,12 @@ import { useSelector } from 'react-redux';
 import CustomSpinner from 'components/shared/CustomSpinner';
 import NotLoggedInRoutes from 'routes/NotLoggedInRoutes';
 import LoggedInRoutes from 'routes/LoggedInRoutes';
+import Appointment from 'pages/appointment';
+import Profile from 'pages/profile';
+import OnlyAdminRoutes from 'routes/OnlyAdminRoutes';
+import AdminDoctors from 'pages/admin/doctors';
+import AdminUsers from 'pages/admin/users';
+import ApplyDoctor from 'pages/apply-doctor';
 
 function App() {
   const { loading } = useSelector((state) => state.alerts);
@@ -24,6 +30,13 @@ function App() {
         </Route>
         <Route element={<LoggedInRoutes />}>
           <Route path="/" element={<Home />} />
+          <Route path="/appointment" element={<Appointment />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/apply-doctor" element={<ApplyDoctor />} />
+        </Route>
+        <Route element={<OnlyAdminRoutes />}>
+          <Route path="/admin/doctors" element={<AdminDoctors />} />
+          <Route path="/admin/users" element={<AdminUsers />} />
         </Route>
         <Route path="*" element={<NotFound />} />
       </Routes>

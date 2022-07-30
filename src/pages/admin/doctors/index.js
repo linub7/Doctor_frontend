@@ -1,11 +1,11 @@
 import CommonLayout from 'components/shared/CommonLayout';
 
-const Home = () => {
+const AdminDoctors = () => {
   return (
     <CommonLayout>
-      <h1>Home Page</h1>
+      <h1>Admin Doctors</h1>
     </CommonLayout>
   );
 };
 
-export default Home;
+export default AdminDoctors;

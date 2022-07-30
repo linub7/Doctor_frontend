@@ -1,11 +1,12 @@
 import CommonLayout from 'components/shared/CommonLayout';
+import React from 'react';
 
-const Home = () => {
+const Profile = () => {
   return (
     <CommonLayout>
-      <h1>Home Page</h1>
+      <h1>Profile Page</h1>
     </CommonLayout>
   );
 };
 
-export default Home;
+export default Profile;
