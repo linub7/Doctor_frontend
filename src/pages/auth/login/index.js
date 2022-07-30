@@ -5,7 +5,7 @@ import toast from 'react-hot-toast';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { hideLoading, showLoading } from 'redux/reducers/alertSlice';
-import { setAuth, setError } from 'redux/reducers/authSlice';
+import { setAuth } from 'redux/reducers/authSlice';
 
 const Login = () => {
   const { loading } = useSelector((state) => state.alerts);
@@ -20,13 +20,10 @@ const Login = () => {
     if (err) {
       console.log(err);
       dispatch(hideLoading());
-      dispatch(setError(err?.error));
       return toast.error(err?.error);
     }
     dispatch(hideLoading());
     toast.success('Login Successful');
-    console.log(data);
-    dispatch(setError(''));
     const { success, ...rest } = data;
     dispatch(setAuth(rest));
     Cookies.set('auth', JSON.stringify(rest));

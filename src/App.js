@@ -15,6 +15,7 @@ import OnlyAdminRoutes from 'routes/OnlyAdminRoutes';
 import AdminDoctors from 'pages/admin/doctors';
 import AdminUsers from 'pages/admin/users';
 import ApplyDoctor from 'pages/apply-doctor';
+import Notifications from 'pages/notifications';
 
 function App() {
   const { loading } = useSelector((state) => state.alerts);
@@ -33,6 +34,7 @@ function App() {
           <Route path="/appointment" element={<Appointment />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/apply-doctor" element={<ApplyDoctor />} />
+          <Route path="/notifications" element={<Notifications />} />
         </Route>
         <Route element={<OnlyAdminRoutes />}>
           <Route path="/admin/doctors" element={<AdminDoctors />} />

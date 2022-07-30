@@ -27,10 +27,36 @@
   border-color: #2ecc71 !important;
 }
 
+.ant-spin {
+  color: #f39c12;
+}
+
 .route-link {
   color: black;
+  cursor: pointer;
 }
 
 .route-link:hover {
   color: #2ecc71;
+  text-decoration: underline;
+}
+
+.page-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: rgba(0, 0, 0, 0.671);
+}
+
+.c-pointer {
+  cursor: pointer;
+}
+
+.primary-btn {
+  background-color: #2ecc71 !important;
+  border-color: #2ecc71 !important;
+  height: 40px;
+  width: 100% !important;
+  color: white !important;
+  font-size: 16px !important;
+  width: max-content !important;
 }

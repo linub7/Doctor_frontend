@@ -9,11 +9,13 @@ import {
 } from '@ant-design/icons';
 import { useWindowWidth } from '@react-hook/window-size';
 import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import CustomBadge from './Badge';
 
 const CommonLayout = ({ children }) => {
   const [collapsed, setCollapsed] = useState(false);
   const { auth } = useSelector((state) => state.auth);
+  const navigate = useNavigate();
 
   // hooks
   const onlyWidth = useWindowWidth();
@@ -57,7 +59,17 @@ const CommonLayout = ({ children }) => {
               <div></div>
             )}
             <div className="d-flex align-items-center justify-content-between header-right">
-              <BellOutlined />
+              <CustomBadge
+                length={auth?.unseenNotifications?.length}
+                color="#f39c12"
+              >
+                <BellOutlined
+                  className="bell-icon"
+                  onClick={() => {
+                    navigate('/notifications');
+                  }}
+                />
+              </CustomBadge>
               <Link className="route-link" to="/profile">
                 {auth?.name}
               </Link>

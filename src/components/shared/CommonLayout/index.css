@@ -54,16 +54,26 @@
   background-color: #fff;
   border-radius: 5px;
   box-shadow: 0 0 2px gray;
-  height: calc(90vh - 20px);
+  min-height: calc(90vh - 20px);
+  padding: 1rem;
 }
 
 .header-right {
   margin-right: 4px;
-  cursor: pointer;
 }
 
 .header-right:hover {
   text-decoration: underline;
+}
+
+.bell-icon {
+  transform: translate(-3px, -3px);
+  margin-right: 8px;
+  cursor: pointer;
+}
+
+.ant-scroll-number {
+  transform: translate(-4px, -4px);
 }
 
 @media screen and (max-width: 800px) {
