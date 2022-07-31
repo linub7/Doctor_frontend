@@ -14,17 +14,13 @@ export const applyDoctorHandler = async (values, token) => {
   }
 };
 
-export const seenNotificationHandler = async (token) => {
+export const getAllDoctorsHandler = async (token) => {
   try {
-    const { data } = await client.put(
-      `/doctors/seen-notification`,
-      {},
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
+    const { data } = await client.get(`/doctors`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
     return { data };
   } catch (error) {
     const { response } = error;
@@ -32,11 +28,11 @@ export const seenNotificationHandler = async (token) => {
   }
 };
 
-export const removeAllNotificationHandler = async (token) => {
+export const updateDoctorStatusHandler = async (status, doctorId, token) => {
   try {
     const { data } = await client.put(
-      `/doctors/remove-all-notifications`,
-      {},
+      `/doctors/${doctorId}`,
+      { status },
       {
         headers: {
           Authorization: `Bearer ${token}`,

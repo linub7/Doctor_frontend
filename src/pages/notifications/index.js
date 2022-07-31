@@ -1,7 +1,7 @@
 import {
   removeAllNotificationHandler,
   seenNotificationHandler,
-} from 'api/doctor';
+} from 'api/users';
 import NotificationTabs from 'components/notifications/tabs/NotificationTabs';
 import CommonLayout from 'components/shared/CommonLayout';
 import Cookies from 'js-cookie';
@@ -10,7 +10,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { hideLoading, showLoading } from 'redux/reducers/alertSlice';
 import { setAuth } from 'redux/reducers/authSlice';
 
-const Notifications = () => {
+const Notifications = ({ setForceRenderPage }) => {
   const dispatch = useDispatch();
   const { auth } = useSelector((state) => state?.auth);
   const { loading } = useSelector((state) => state?.alerts);
@@ -33,6 +33,7 @@ const Notifications = () => {
     cookieAuth.seenNotifications = seenNotifications;
     cookieAuth.unseenNotifications = [];
     Cookies.set('auth', JSON.stringify(cookieAuth));
+    setForceRenderPage((prev) => !prev);
   };
 
   const handleRemoveNotifications = async () => {

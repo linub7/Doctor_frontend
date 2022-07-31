@@ -16,9 +16,13 @@ import AdminDoctors from 'pages/admin/doctors';
 import AdminUsers from 'pages/admin/users';
 import ApplyDoctor from 'pages/apply-doctor';
 import Notifications from 'pages/notifications';
+import { useEffect, useState } from 'react';
 
 function App() {
+  const [forceRenderPage, setForceRenderPage] = useState(false);
   const { loading } = useSelector((state) => state.alerts);
+
+  useEffect(() => {}, [forceRenderPage]);
 
   return (
     <>
@@ -31,14 +35,32 @@ function App() {
         </Route>
         <Route element={<LoggedInRoutes />}>
           <Route path="/" element={<Home />} />
-          <Route path="/appointment" element={<Appointment />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/apply-doctor" element={<ApplyDoctor />} />
-          <Route path="/notifications" element={<Notifications />} />
+          <Route
+            path="/appointment"
+            element={<Appointment setForceRenderPage={setForceRenderPage} />}
+          />
+          <Route
+            path="/profile"
+            element={<Profile setForceRenderPage={setForceRenderPage} />}
+          />
+          <Route
+            path="/apply-doctor"
+            element={<ApplyDoctor setForceRenderPage={setForceRenderPage} />}
+          />
+          <Route
+            path="/notifications"
+            element={<Notifications setForceRenderPage={setForceRenderPage} />}
+          />
         </Route>
         <Route element={<OnlyAdminRoutes />}>
-          <Route path="/admin/doctors" element={<AdminDoctors />} />
-          <Route path="/admin/users" element={<AdminUsers />} />
+          <Route
+            path="/admin/doctors"
+            element={<AdminDoctors setForceRenderPage={setForceRenderPage} />}
+          />
+          <Route
+            path="/admin/users"
+            element={<AdminUsers setForceRenderPage={setForceRenderPage} />}
+          />
         </Route>
         <Route path="*" element={<NotFound />} />
       </Routes>
