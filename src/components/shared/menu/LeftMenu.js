@@ -22,6 +22,8 @@ const LeftMenu = ({ collapsed, role }) => {
 
   const isUserOrDoctor = role === 'user' || role === 'doctor';
   const isAdmin = role === 'admin';
+  const isDoctor = role === 'doctor';
+  const isUser = role === 'user';
 
   const items = [
     {
@@ -42,7 +44,7 @@ const LeftMenu = ({ collapsed, role }) => {
         setCurrent('appointment');
       },
     },
-    isUserOrDoctor && {
+    isUser && {
       label: 'Apply Doctor',
       key: 'apply-doctor',
       icon: <MedicineBoxOutlined />,
@@ -69,15 +71,25 @@ const LeftMenu = ({ collapsed, role }) => {
         setCurrent('doctors');
       },
     },
-    {
-      label: 'Profile',
-      key: 'profile',
-      icon: <UserOutlined />,
-      onClick: () => {
-        navigate('/profile');
-        setCurrent('profile');
-      },
-    },
+    isDoctor
+      ? {
+          label: 'Doctor Profile',
+          key: 'profile',
+          icon: <UserOutlined />,
+          onClick: () => {
+            navigate('/doctor/profile');
+            setCurrent('profile');
+          },
+        }
+      : {
+          label: 'Profile',
+          key: 'profile',
+          icon: <UserOutlined />,
+          onClick: () => {
+            navigate('/profile');
+            setCurrent('profile');
+          },
+        },
     {
       label: 'Logout',
       key: 'logout',

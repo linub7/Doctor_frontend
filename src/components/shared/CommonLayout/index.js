@@ -22,8 +22,6 @@ const CommonLayout = ({ children }) => {
   const { auth } = useSelector((state) => state.auth);
   const navigate = useNavigate();
 
-  console.log(unseenNotificationsCount);
-
   const dispatch = useDispatch();
 
   // hooks

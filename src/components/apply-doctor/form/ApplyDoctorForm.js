@@ -1,10 +1,25 @@
 import { Button, Form, Row } from 'antd';
 import ApplyDoctorFormItem from './ApplyDoctorFormItem';
 import ApplyDoctorFormTimePicker from './ApplyDoctorFormTimePicker';
+import moment from 'moment';
 
-const ApplyDoctorForm = ({ onFinish, loading }) => {
+const ApplyDoctorForm = ({ onFinish, loading, initialValues = null }) => {
   return (
-    <Form layout="vertical" onFinish={onFinish}>
+    <Form
+      layout="vertical"
+      onFinish={onFinish}
+      initialValues={{
+        ...initialValues,
+        timings: [
+          initialValues?.timings
+            ? moment(initialValues?.timings[0], 'HH:mm')
+            : null,
+          initialValues?.timings
+            ? moment(initialValues?.timings[1], 'HH:mm')
+            : null,
+        ],
+      }}
+    >
       <h1 className="card-title" style={{ marginBottom: '10px' }}>
         Personal Information
       </h1>
@@ -107,6 +122,7 @@ const ApplyDoctorForm = ({ onFinish, loading }) => {
           type="number"
         />
         <ApplyDoctorFormTimePicker
+          format="HH:mm"
           placeholder={'Timings'}
           name="timings"
           rules={[{ required: true, message: 'Please input your timings!' }]}

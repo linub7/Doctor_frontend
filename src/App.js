@@ -17,6 +17,7 @@ import AdminUsers from 'pages/admin/users';
 import ApplyDoctor from 'pages/apply-doctor';
 import Notifications from 'pages/notifications';
 import { useEffect, useState } from 'react';
+import DoctorProfile from 'pages/doctor/profile';
 
 function App() {
   const [forceRenderPage, setForceRenderPage] = useState(false);
@@ -42,6 +43,10 @@ function App() {
           <Route
             path="/profile"
             element={<Profile setForceRenderPage={setForceRenderPage} />}
+          />
+          <Route
+            path="/doctor/profile"
+            element={<DoctorProfile setForceRenderPage={setForceRenderPage} />}
           />
           <Route
             path="/apply-doctor"

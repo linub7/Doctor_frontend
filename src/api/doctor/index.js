@@ -28,11 +28,57 @@ export const getAllDoctorsHandler = async (token) => {
   }
 };
 
+export const getAllApprovedDoctorsHandler = async (token) => {
+  try {
+    const { data } = await client.get(`/doctors/approved`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    return { data };
+  } catch (error) {
+    const { response } = error;
+    return { err: response?.data };
+  }
+};
+
+export const getSingleDoctorProfileHandler = async (doctorId, token) => {
+  try {
+    const { data } = await client.get(`/doctors/${doctorId}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    return { data };
+  } catch (error) {
+    const { response } = error;
+    return { err: response?.data };
+  }
+};
+
 export const updateDoctorStatusHandler = async (status, doctorId, token) => {
   try {
     const { data } = await client.put(
       `/doctors/${doctorId}`,
       { status },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    return { data };
+  } catch (error) {
+    const { response } = error;
+    return { err: response?.data };
+  }
+};
+
+export const updateDoctorProfileHandler = async (values, doctorId, token) => {
+  try {
+    const { data } = await client.put(
+      `/doctors/update-profile/${doctorId}`,
+      values,
       {
         headers: {
           Authorization: `Bearer ${token}`,

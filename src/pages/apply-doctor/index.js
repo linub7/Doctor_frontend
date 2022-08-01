@@ -5,6 +5,7 @@ import toast from 'react-hot-toast';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { hideLoading, showLoading } from 'redux/reducers/alertSlice';
+import moment from 'moment';
 
 const ApplyDoctor = () => {
   const navigate = useNavigate();
@@ -13,6 +14,11 @@ const ApplyDoctor = () => {
   const dispatch = useDispatch();
   const onFinish = async (values) => {
     dispatch(showLoading());
+
+    values.timings = [
+      moment(values.timings[0]).format('HH:mm'),
+      moment(values.timings[1]).format('HH:mm'),
+    ];
 
     const { data, err } = await applyDoctorHandler(values, auth?.token);
     if (err) {
