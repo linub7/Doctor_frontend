@@ -1,4 +1,6 @@
+import { Row } from 'antd';
 import { getAllApprovedDoctorsHandler } from 'api/doctor';
+import DoctorItem from 'components/doctor/DoctorItem';
 import CommonLayout from 'components/shared/CommonLayout';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -36,7 +38,11 @@ const Home = () => {
 
   return (
     <CommonLayout>
-      <h1>Home Page</h1>
+      <Row gutter={20}>
+        {approvedDoctors?.map((doctor) => (
+          <DoctorItem key={doctor._id} doctor={doctor} />
+        ))}
+      </Row>
     </CommonLayout>
   );
 };

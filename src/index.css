@@ -60,3 +60,7 @@
   font-size: 16px !important;
   width: max-content !important;
 }
+
+.full-width-button {
+  width: 100% !important;
+}

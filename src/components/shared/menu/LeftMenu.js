@@ -40,7 +40,7 @@ const LeftMenu = ({ collapsed, role }) => {
       key: 'appointment',
       icon: <ProfileOutlined />,
       onClick: () => {
-        navigate('/appointment');
+        isDoctor ? navigate('/doctor/appointments') : navigate('/appointment');
         setCurrent('appointment');
       },
     },

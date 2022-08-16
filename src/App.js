@@ -18,6 +18,8 @@ import ApplyDoctor from 'pages/apply-doctor';
 import Notifications from 'pages/notifications';
 import { useEffect, useState } from 'react';
 import DoctorProfile from 'pages/doctor/profile';
+import DoctorBookAppointment from 'pages/appointment/book/[doctorId]';
+import DoctorAppointments from 'pages/doctor/appointments';
 
 function App() {
   const [forceRenderPage, setForceRenderPage] = useState(false);
@@ -41,12 +43,24 @@ function App() {
             element={<Appointment setForceRenderPage={setForceRenderPage} />}
           />
           <Route
+            path="/appointment/book/:doctorId"
+            element={
+              <DoctorBookAppointment setForceRenderPage={setForceRenderPage} />
+            }
+          />
+          <Route
             path="/profile"
             element={<Profile setForceRenderPage={setForceRenderPage} />}
           />
           <Route
             path="/doctor/profile"
             element={<DoctorProfile setForceRenderPage={setForceRenderPage} />}
+          />
+          <Route
+            path="/doctor/appointments"
+            element={
+              <DoctorAppointments setForceRenderPage={setForceRenderPage} />
+            }
           />
           <Route
             path="/apply-doctor"

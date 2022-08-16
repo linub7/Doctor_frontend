@@ -50,6 +50,20 @@ export const getAllUsersHandler = async (token) => {
   }
 };
 
+export const getAllUserAppointmentsHandler = async (token) => {
+  try {
+    const { data } = await client.get(`/users/appointments`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    return { data };
+  } catch (error) {
+    const { response } = error;
+    return { err: response?.data };
+  }
+};
+
 export const getUserUnseenNotificationsHandler = async (token) => {
   try {
     const { data } = await client.get(`/users/unseen-notifications-count`, {

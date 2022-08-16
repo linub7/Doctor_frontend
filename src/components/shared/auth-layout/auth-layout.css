@@ -1,5 +1,6 @@
 .card {
   box-shadow: 0 0 2px gray;
+  border-radius: 5px;
 }
 
 .card-title {
@@ -11,6 +12,12 @@
   margin-left: -35px;
   width: max-content !important;
   border-bottom-left-radius: 10px;
+}
+
+.card-title-2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: rgba(0, 0, 0, 0.705);
 }
 
 .normal-text {
